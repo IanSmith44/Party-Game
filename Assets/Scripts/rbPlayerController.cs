@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
 
 public class rbPlayerController : MonoBehaviour
 {
@@ -59,13 +60,15 @@ public class rbPlayerController : MonoBehaviour
         sr = GetComponent<SpriteRenderer>();
         if (transform.position.x < enemy.position.x)
         {
-            Destroy(gameObject);
+            transform.position = new Vector2(5500,0);
+            gameObject.tag = "ground";
+            //Destroy(gameObject);
         }
-        if (cam.transform.position.x - transform.position.x > camDistance)
+        if (cam.transform.position.x - transform.position.x > camDistance && gameObject.tag != "ground")
         {
             transform.position = new Vector3(cam.transform.position.x - camDistance + 0.05f, transform.position.y, transform.position.z);
         }
-        if (cam.transform.position.x - transform.position.x < -1 * camDistance)
+        if (cam.transform.position.x - transform.position.x < -1 * camDistance && gameObject.tag != "ground")
         {
             transform.position = new Vector3(cam.transform.position.x + camDistance - 0.05f, transform.position.y, transform.position.z);
         }
@@ -123,16 +126,48 @@ public class rbPlayerController : MonoBehaviour
         }
         if (collision.gameObject.tag == "Die")
         {
-            Destroy(gameObject);
+            transform.position = new Vector2(5500,0);
+            gameObject.tag = "ground";
+            //Destroy(gameObject);
         }
         if (collision.gameObject.tag == "Finish")
         {
-            Destroy(gameObject);
+           // Destroy(gameObject);
+           transform.position = new Vector2(5500,0);
+           gameObject.tag = "ground";
             Debug.Log("FINISH!");
         }
         if (collision.gameObject.tag == "Jump Pad")
         {
             rb.velocity = new Vector2(rb.velocity.x, 20);
         }
+    }
+    void OnEnable()
+    {
+
+        SceneManager.sceneLoaded += OnSceneLoaded;
+    }
+
+    // called second
+    void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    {
+
+
+
+       
+        //TF.position = new Vector2(-2.5f + PN,0);
+        transform.position = new Vector2(0,0);
+        gameObject.tag = "Player";
+       
+        
+    }
+
+    // called third
+
+
+    // called when the game is terminated
+    void OnDisable()
+    {
+        SceneManager.sceneLoaded -= OnSceneLoaded;
     }
 }
