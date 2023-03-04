@@ -7,6 +7,11 @@ TagManager:
   - Ground
   - Die
   - Jump Pad
+  - ground
+  - corn
+  - kernal
+  - fireBall
+  - Devil
   layers:
   - Default
   - TransparentFX
