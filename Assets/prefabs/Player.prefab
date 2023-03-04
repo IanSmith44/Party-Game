@@ -145,8 +145,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ee3e38ac94b16a347bff5bc93a1b0d0f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  anim: {fileID: 0}
-  rb: {fileID: 0}
+  player: {fileID: 2904586790003023387}
+  anim: {fileID: 2904586790003023381}
+  rb: {fileID: -5841613576261091132}
   ianPlayerScript: {fileID: 1878979339699229335}
   grantPlayerScript: {fileID: 5827697423238103066}
 --- !u!114 &5827697423238103066

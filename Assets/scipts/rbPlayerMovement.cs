@@ -66,7 +66,7 @@ public class rbPlayerMovement : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         MM.PlayerN += 1;
         PN = MM.PlayerN;
-        scen = Random.Range(2, 4);
+
 
         BC = gameObject.GetComponent<BoxCollider2D>();
         PC = gameObject.GetComponent<PolygonCollider2D>();
@@ -183,6 +183,7 @@ public class rbPlayerMovement : MonoBehaviour
 
         if(SceneManager.GetActiveScene () == SceneManager.GetSceneByName ("rbSampleScene"))
         {
+        scen = Random.Range(2, 5);
         SceneManager.LoadScene(scen);
         }
         }

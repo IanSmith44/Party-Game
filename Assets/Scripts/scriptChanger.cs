@@ -5,6 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class scriptChanger : MonoBehaviour
 {
+    [SerializeField] private GameObject player;
     [SerializeField] private Animator anim;
     [SerializeField] private Rigidbody2D rb;
     [SerializeField] private rbPlayerController ianPlayerScript;
@@ -20,6 +21,7 @@ public class scriptChanger : MonoBehaviour
     {
         if (SceneManager.GetActiveScene().name == "rb")
         {
+            player.transform.localScale = new Vector3(0.45f, 0.45f, 0.45f);
             rb.gravityScale = 1.75f;
             rb.mass = 0.5f;
             anim.SetBool("devil", false);
@@ -29,6 +31,7 @@ public class scriptChanger : MonoBehaviour
         //else if (SceneManager.GetActiveScene.name == "brennon"){}
         else
         {
+            player.transform.localScale = new Vector3(0.25f, 0.25f, 0.25f);
             rb.mass = 1.0f;
             rb.gravityScale = 2.0f;
             ianPlayerScript.enabled = false;
