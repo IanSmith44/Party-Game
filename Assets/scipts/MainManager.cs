@@ -53,9 +53,17 @@ public class MainManager : MonoBehaviour
         if(time <= 0){
             sce = Random.Range(2, 5);
             SceneManager.LoadScene(sce);
-            time = 120;
+            if (SceneManager.GetActiveScene() != SceneManager.GetSceneByName("rb"))
+            {
+                time = 120;
+            }
+            else
+            {
+                time = 300;
+            }
         }
         TL.text = "Time Left: " + Mathf.Round(time);
+
 
 
         if(SceneManager.GetActiveScene () == SceneManager.GetSceneByName ("Play")){
@@ -108,7 +116,14 @@ public class MainManager : MonoBehaviour
         curWorld = 0;
         world = 0;
         currentDevil = 0f;
-        time = 120;
+        if (SceneManager.GetActiveScene() != SceneManager.GetSceneByName("rb"))
+        {
+            time = 120;
+        }
+        else
+        {
+            time = 300;
+        }
         if(curScene == "Play" || curScene == "CornEat"){
         Debug.Log(curScene);
         for(int i = 0; i < PlayerN; i++ ){

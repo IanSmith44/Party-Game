@@ -184,6 +184,8 @@ public class rbPlayerMovement : MonoBehaviour
         if(SceneManager.GetActiveScene () == SceneManager.GetSceneByName ("rbSampleScene"))
         {
         scen = Random.Range(2, 5);
+        //Set scene here for testing specific scene
+        //scen = 4;
         SceneManager.LoadScene(scen);
         }
         }

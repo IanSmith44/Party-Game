@@ -4,6 +4,7 @@ using UnityEngine.SceneManagement;
 
 public class rbPlayerController : MonoBehaviour
 {
+    [SerializeField] private rbPlayerMovement grantPlayerScript;
     [SerializeField] private Transform enemy;
     [SerializeField] private float camDistance = 7.5f;
     [SerializeField] private Camera cam;
@@ -56,7 +57,7 @@ public class rbPlayerController : MonoBehaviour
     void Update()
     {
         enemy = GameObject.Find("Fire").transform;
-        cam = FindObjectOfType<Camera>();;
+        cam = FindObjectOfType<Camera>();
         sr = GetComponent<SpriteRenderer>();
         if (transform.position.x < enemy.position.x)
         {
@@ -126,16 +127,10 @@ public class rbPlayerController : MonoBehaviour
         }
         if (collision.gameObject.tag == "Die")
         {
+            grantPlayerScript.score -= 1;
             transform.position = new Vector2(5500,0);
             gameObject.tag = "ground";
             //Destroy(gameObject);
-        }
-        if (collision.gameObject.tag == "Finish")
-        {
-           // Destroy(gameObject);
-           transform.position = new Vector2(5500,0);
-           gameObject.tag = "ground";
-            Debug.Log("FINISH!");
         }
         if (collision.gameObject.tag == "Jump Pad")
         {
@@ -154,12 +149,12 @@ public class rbPlayerController : MonoBehaviour
 
 
 
-       
+
         //TF.position = new Vector2(-2.5f + PN,0);
         transform.position = new Vector2(0,0);
         gameObject.tag = "Player";
-       
-        
+
+
     }
 
     // called third
