@@ -4,6 +4,7 @@ using UnityEngine.SceneManagement;
 
 public class rbPlayerController : MonoBehaviour
 {
+    private bool spin;
     [SerializeField] private rbPlayerMovement grantPlayerScript;
     [SerializeField] private Transform enemy;
     [SerializeField] private float camDistance = 7.5f;
@@ -37,6 +38,13 @@ public class rbPlayerController : MonoBehaviour
         sr = GetComponent<SpriteRenderer>();
         */
     }
+        public void OnSpin(InputAction.CallbackContext context)
+    {
+        if (context.action.triggered)
+        {
+            spin = !spin;
+        }
+    }
 
     public void OnMove(InputAction.CallbackContext context)
     {
@@ -56,6 +64,14 @@ public class rbPlayerController : MonoBehaviour
 
     void Update()
     {
+        if (spin)
+        {
+            rb.freezeRotation = false;
+        }
+        else 
+        {
+            rb.freezeRotation = true;
+        }
         enemy = GameObject.Find("Fire").transform;
         cam = FindObjectOfType<Camera>();
         sr = GetComponent<SpriteRenderer>();
@@ -142,6 +158,8 @@ public class rbPlayerController : MonoBehaviour
 
         SceneManager.sceneLoaded += OnSceneLoaded;
     }
+
+
 
     // called second
     void OnSceneLoaded(Scene scene, LoadSceneMode mode)

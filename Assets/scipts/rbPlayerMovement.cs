@@ -16,7 +16,7 @@ public class rbPlayerMovement : MonoBehaviour
     private float r;
     private float g;
     private float b;
-
+    [SerializeField] private ParticleSystem ps;
     public int score = 0;
     public int hits = 0;
     public Rigidbody2D kernals;
@@ -185,7 +185,7 @@ public class rbPlayerMovement : MonoBehaviour
         {
         scen = Random.Range(2, 5);
         //Set scene here for testing specific scene
-        //scen = 4;
+        scen = 4;
         SceneManager.LoadScene(scen);
         }
         }
@@ -252,6 +252,7 @@ public class rbPlayerMovement : MonoBehaviour
     Collider2D col = collision.gameObject.GetComponent<Collider2D>();
     if(collision.gameObject.tag == "fireBall" ){
         MM.currentDevil = PN;
+        ps.Play();
     }
     if(collision.gameObject.tag == "ground" && BC.IsTouching(col)){
         canJump = true;
