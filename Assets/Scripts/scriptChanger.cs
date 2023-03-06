@@ -32,7 +32,7 @@ public class scriptChanger : MonoBehaviour
         else
         {
             rb.freezeRotation = true;
-            transform.rotation = new Vector3(0, 0, 0);
+            transform.rotation = Quaternion.Euler(0, 0, 0);
             player.transform.localScale = new Vector3(0.25f, 0.25f, 0.25f);
             rb.mass = 1.0f;
             rb.gravityScale = 2.0f;
