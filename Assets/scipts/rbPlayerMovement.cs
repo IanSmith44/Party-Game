@@ -193,6 +193,7 @@ public class rbPlayerMovement : MonoBehaviour
 
     void Update()
     {
+        
         totalPlayers = MM.PlayerN;
         if(SceneManager.GetActiveScene () == SceneManager.GetSceneByName ("rbSampleScene")){
             transform.position = new Vector2(5.0f/(MM.PlayerN + 2) * PN -3f, -0.5f);
@@ -262,8 +263,10 @@ public class rbPlayerMovement : MonoBehaviour
         cornE = true;
         AM.SetBool("CornEat", true);
         Destroy(collision.gameObject);
+        
     } else if (collision.gameObject.tag == "kernal"){
         hits += 1;
+
     }
     }
     void OnCollisionExit2D(Collision2D col){

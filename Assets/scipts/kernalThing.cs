@@ -13,7 +13,7 @@ public class kernalThing : MonoBehaviour
     {
         tf = GetComponent<Transform>();
         rb = GetComponent<Rigidbody2D>();
-        if (tf.rotation.eulerAngles.z == 90)
+        if (tf.rotation.eulerAngles.z == 0)
 {
         rb.AddForce(Vector3.right*1000);
         } else{
