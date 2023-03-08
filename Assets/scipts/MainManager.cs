@@ -31,7 +31,7 @@ public class MainManager : MonoBehaviour
     private rbPlayerMovement PM;
 
     private void start(){
-        sce = Random.Range(2, 5);
+        sce = Random.Range(2, 6);
         useLess = GameObject.Find("PlayerManager").GetComponent<useLess>();
 
     }
@@ -51,7 +51,7 @@ public class MainManager : MonoBehaviour
     void Update(){
         time -= Time.deltaTime;
         if(time <= 0){
-            sce = Random.Range(2, 5);
+            sce = Random.Range(2, 6);
             SceneManager.LoadScene(sce);
             if (SceneManager.GetActiveScene() != SceneManager.GetSceneByName("rb"))
             {

@@ -183,9 +183,9 @@ public class rbPlayerMovement : MonoBehaviour
 
         if(SceneManager.GetActiveScene () == SceneManager.GetSceneByName ("rbSampleScene"))
         {
-        scen = Random.Range(2, 5);
+        scen = Random.Range(2, 6);
         //Set scene here for testing specific scene
-        scen = 4;
+        //scen = 5;
         SceneManager.LoadScene(scen);
         }
         }
@@ -210,7 +210,7 @@ public class rbPlayerMovement : MonoBehaviour
             AM.SetBool("devil", true);
             gameObject.tag = "Devil";
             // your the devil stuff
-          DT += Time.deltaTime;
+            DT += Time.deltaTime;
             Vector2 move = new Vector2(movementInput. x,movementInput.y * 3);
             rb.AddForce(move * playerSpeed * Time.deltaTime);
         } else if (cornE){
