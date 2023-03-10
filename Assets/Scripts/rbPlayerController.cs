@@ -4,6 +4,8 @@ using UnityEngine.SceneManagement;
 
 public class rbPlayerController : MonoBehaviour
 {
+    MainManager MM;
+    [SerializeField] private GameObject pauseMenu;
     private bool spin;
     [SerializeField] private rbPlayerMovement grantPlayerScript;
     [SerializeField] private Transform enemy;
@@ -32,12 +34,28 @@ public class rbPlayerController : MonoBehaviour
 
     private void Start()
     {
+        MM = GameObject.Find("MainManager").GetComponent<MainManager>();
         /*
         enemy = GameObject.Find("Fire").transform;
         cam = FindObjectOfType<Camera>();;
         sr = GetComponent<SpriteRenderer>();
         */
     }
+        public void OnPause(InputAction.CallbackContext context)
+        {
+            if (context.action.triggered)
+            {
+                pauseMenu.SetActive(!pauseMenu.activeSelf);
+                if (Time.timeScale == 1)
+                {
+                    Time.timeScale = 0;
+                }
+                else
+                {
+                    Time.timeScale = 1;
+                }
+            }
+        }
         public void OnSpin(InputAction.CallbackContext context)
     {
         if (context.action.triggered)
@@ -54,7 +72,11 @@ public class rbPlayerController : MonoBehaviour
     public void OnJump(InputAction.CallbackContext context)
     {
         jumped = context.action.triggered;
-        //Debug.Log("Jumped1");
+    }
+
+    public void OnSkip()
+    {
+        MM.tuttim = 0f;
     }
 
     public void OnSprint(InputAction.CallbackContext context)
@@ -68,7 +90,7 @@ public class rbPlayerController : MonoBehaviour
         {
             rb.freezeRotation = false;
         }
-        else 
+        else
         {
             rb.freezeRotation = true;
         }
@@ -122,7 +144,7 @@ public class rbPlayerController : MonoBehaviour
             rb.velocity = new Vector2(rb.velocity.x,jumpHeight);
             //rb.AddForce(Vector3.up * jumpHeight, ForceMode2D.Impulse);
             grounded = false;
-            Debug.Log("Jumped!");
+            //Debug.Log("Jumped!");
         }
         sr.flipX = movementInput.x < 0 ? false : (movementInput.x > 0 ? true : sr.flipX);
     }
@@ -139,7 +161,7 @@ public class rbPlayerController : MonoBehaviour
         if (collision.gameObject.tag == "Ground")
         {
             grounded = true;
-            Debug.Log("Grounded!");
+            //Debug.Log("Grounded!");
         }
         if (collision.gameObject.tag == "Die")
         {
@@ -164,6 +186,7 @@ public class rbPlayerController : MonoBehaviour
     // called second
     void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
+        pauseMenu = GameObject.Find("Menu");
 
 
 

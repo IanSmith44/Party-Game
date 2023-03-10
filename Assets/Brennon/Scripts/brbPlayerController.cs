@@ -4,6 +4,7 @@ using UnityEngine.SceneManagement;
 
 public class brbPlayerController : MonoBehaviour
 {
+    MainManager MM;
     public Rigidbody2D rb;
 
     public Animator animator;
@@ -32,11 +33,28 @@ public class brbPlayerController : MonoBehaviour
     private int stockCounter = 3;
     public float hitMultiplier = 1.0f;
     private SpriteRenderer sr;
+    [SerializeField] private GameObject pauseMenu;
 
     private void Start()
     {
+        MM = GameObject.Find("MainManager").GetComponent<MainManager>();
         sr = GetComponent<SpriteRenderer>();
     }
+        public void OnPause(InputAction.CallbackContext context)
+        {
+            if (context.action.triggered)
+            {
+                pauseMenu.SetActive(!pauseMenu.activeSelf);
+                if (Time.timeScale == 1)
+                {
+                    Time.timeScale = 0;
+                }
+                else
+                {
+                    Time.timeScale = 1;
+                }
+            }
+        }
 
     public void OnMove(InputAction.CallbackContext context)
     {
@@ -48,6 +66,10 @@ public class brbPlayerController : MonoBehaviour
         jumped = context.action.triggered;
     }
 
+    public void OnSkip()
+    {
+        MM.tuttim = 0f;
+    }
     public void OnSprint(InputAction.CallbackContext context)
     {
         sprintin = context.action.triggered;
@@ -56,10 +78,10 @@ public class brbPlayerController : MonoBehaviour
     public void OnAttack(InputAction.CallbackContext context)
     {
         attacked = context.action.triggered;
-        Debug.Log(collidingWith);
+        //Debug.Log(collidingWith);
         if (collidingWith != null)
         {
-            Debug.Log(hitMultiplier);
+            //Debug.Log(hitMultiplier);
             float xForce = 50f;
             float yForce = 50f;
             if (!sr.flipX)
@@ -173,6 +195,7 @@ public class brbPlayerController : MonoBehaviour
     // called second
     void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
+        pauseMenu = GameObject.Find("Menu");
         grantScrip.score += stockCounter;
         transform.position = new Vector2(0,0);
     }

@@ -6,6 +6,9 @@ using TMPro;
 
 public class MainManager : MonoBehaviour
 {
+    public float tuttim = 15f;
+    [SerializeField] private GameObject tutpan;
+    public bool tut = true;
     public string curScene = "";
     private int num = 0;
     private float temp = 0f;
@@ -49,6 +52,36 @@ public class MainManager : MonoBehaviour
     DontDestroyOnLoad(gameObject);
     }
     void Update(){
+        if (tutpan != null)
+        {
+            if (tutpan.activeSelf == true)
+            {
+                Time.timeScale = 0;
+            }
+            else
+            {
+                Time.timeScale = 1;
+            }
+        }
+        if (tut && tutpan != null)
+        {
+            tutpan.SetActive(true);
+        }
+        else
+        {
+            if (tutpan != null)
+            {
+                tutpan.SetActive(false);
+            }
+        }
+        if (tuttim <= 0)
+        {
+            tut = false;
+        }
+        else
+        {
+            tuttim -= Time.unscaledDeltaTime;
+        }
         time -= Time.deltaTime;
         if(time <= 0){
             sce = Random.Range(2, 6);
@@ -91,7 +124,9 @@ public class MainManager : MonoBehaviour
     // called second
     void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
-
+        tut = true;
+        tuttim = 15f;
+        tutpan = GameObject.Find("TutorialPanel");
 
         if(!player1){
         player1 = GameObject.Find("Player(Clone)");

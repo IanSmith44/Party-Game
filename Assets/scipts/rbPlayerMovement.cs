@@ -48,6 +48,7 @@ public class rbPlayerMovement : MonoBehaviour
     public bool canJump = false;
     private Vector2 movementInput = Vector2.zero;
     public static rbPlayerMovement Instance;
+    [SerializeField] private GameObject pauseMenu;
     private int PN = 0;
     void Awake(){
         r = Random.value;
@@ -88,6 +89,21 @@ public class rbPlayerMovement : MonoBehaviour
 
 
     }
+        public void OnPause(InputAction.CallbackContext context)
+        {
+            if (context.action.triggered)
+            {
+                pauseMenu.SetActive(!pauseMenu.activeSelf);
+                if (Time.timeScale == 1)
+                {
+                    Time.timeScale = 0;
+                }
+                else
+                {
+                    Time.timeScale = 1;
+                }
+            }
+        }
 
     public void OnMove(InputAction.CallbackContext context) {
         if(SceneManager.GetActiveScene () == SceneManager.GetSceneByName ("rbSampleScene")){
@@ -99,6 +115,11 @@ public class rbPlayerMovement : MonoBehaviour
     AM.SetBool("run", true);
         }
 
+    }
+    public void OnSkip()
+    {
+        Debug.Log("skip");
+        MM.tuttim = 0f;
     }
 
     public void OnJump(InputAction.CallbackContext context){
@@ -193,7 +214,7 @@ public class rbPlayerMovement : MonoBehaviour
 
     void Update()
     {
-        
+
         totalPlayers = MM.PlayerN;
         if(SceneManager.GetActiveScene () == SceneManager.GetSceneByName ("rbSampleScene")){
             transform.position = new Vector2(5.0f/(MM.PlayerN + 2) * PN -3f, -0.5f);
@@ -263,7 +284,7 @@ public class rbPlayerMovement : MonoBehaviour
         cornE = true;
         AM.SetBool("CornEat", true);
         Destroy(collision.gameObject);
-        
+
     } else if (collision.gameObject.tag == "kernal"){
         hits += 1;
 
@@ -285,9 +306,7 @@ public class rbPlayerMovement : MonoBehaviour
     // called second
     void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
-
-
-
+        pauseMenu = GameObject.Find("Menu");
         ammo = 0;
         //TF.position = new Vector2(-2.5f + PN,0);
         TF.position = new Vector2(0,0);
