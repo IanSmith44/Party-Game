@@ -47,6 +47,10 @@ public class MainManager : MonoBehaviour
     Instance = this;
     DontDestroyOnLoad(gameObject);
     }
+    void Start()
+    {
+        SceneManager.sceneLoaded += OnSceneLoaded;
+    }
     void Update(){
         if (tutpan != null)
         {
@@ -96,11 +100,11 @@ public class MainManager : MonoBehaviour
             }
             if (SceneManager.GetActiveScene() != SceneManager.GetSceneByName("rb"))
             {
-                time = 120;
+                time = 120f;
             }
             else
             {
-                time = 300;
+                time = 300f;
             }
         }
         TL.text = "Time Left: " + Mathf.Round(time);
@@ -140,33 +144,56 @@ public class MainManager : MonoBehaviour
         player1 = GameObject.Find("Player(Clone)");
         player1.name = "P1";
         player2 = GameObject.Find("Player(Clone)");
-        player2.name = "P2";
+        if (player2 != null)
+        {
+            player2.name = "P2";
+        }
         player3 = GameObject.Find("Player(Clone)");
-        player3.name = "P3";
+        if (player3 != null)
+        {
+            player3.name = "P3";
+        }
         player4 = GameObject.Find("Player(Clone)");
-        player4.name = "P4";
+        if (player4 != null)
+        {
+            player4.name = "P4";
+        }
         player5 = GameObject.Find("Player(Clone)");
-        player5.name = "P5";
+        if (player5 != null)
+        {
+            player5.name = "P5";
+        }
         player6 = GameObject.Find("Player(Clone)");
-        player6.name = "P6";
+        if (player6 != null)
+        {
+            player6.name = "P6";
+        }
         player7 = GameObject.Find("Player(Clone)");
-        player7.name = "P7";
+        if (player7 != null)
+        {
+            player7.name = "P7";
+        }
         player8 = GameObject.Find("Player(Clone)");
-        player8.name = "P8";
+        if (player8 != null)
+        {
+            player8.name = "P8";
+        }
         }
         float[] score = {400f,400f,400f,400f,400f,400f,400f,400f};
         GameObject[] arr = {player1,player2,player3,player4,player5,player6,player7,player8};
         curWorld = 0;
         world = 0;
         currentDevil = 0f;
+        Debug.Log("running time");
         if (SceneManager.GetActiveScene() != SceneManager.GetSceneByName("rb"))
         {
-            time = 120;
+            time = 120f;
         }
         else
         {
-            time = 300;
+            time = 300f;
         }
+        Debug.Log("ran time");
         if(curScene == "Play" || curScene == "CornEat"){
         Debug.Log(curScene);
         for(int i = 0; i < PlayerN; i++ ){
