@@ -12,6 +12,7 @@ public class rbPlayerMovement : MonoBehaviour
         run,
         jump
     }
+    public int rank = 0;
 
     private float r;
     private float g;
@@ -124,7 +125,7 @@ public class rbPlayerMovement : MonoBehaviour
 
     public void OnJump(InputAction.CallbackContext context){
         if(SceneManager.GetActiveScene () == SceneManager.GetSceneByName ("rbSampleScene")){}
-        else if (SceneManager.GetActiveScene() != SceneManager.GetSceneByName("rb")){
+        else if (SceneManager.GetActiveScene() != SceneManager.GetSceneByName("rb") && SceneManager.GetActiveScene() != SceneManager.GetSceneByName("SampleScene") ){
 
         state = playerState.jump;
         AM.SetBool("run", true);

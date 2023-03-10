@@ -40,7 +40,7 @@ public class brbPlayerController : MonoBehaviour
         MM = GameObject.Find("MainManager").GetComponent<MainManager>();
         sr = GetComponent<SpriteRenderer>();
     }
-        public void OnPause(InputAction.CallbackContext context)
+        /*public void OnPause(InputAction.CallbackContext context)
         {
             if (context.action.triggered)
             {
@@ -54,7 +54,7 @@ public class brbPlayerController : MonoBehaviour
                     Time.timeScale = 1;
                 }
             }
-        }
+        }*/
 
     public void OnMove(InputAction.CallbackContext context)
     {
@@ -177,14 +177,11 @@ public class brbPlayerController : MonoBehaviour
 
     void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.tag == "Ground" || collision.gameObject.tag == "Player")
+        if (collision.gameObject.tag == "Ground" /*|| collision.gameObject.tag == "Player"*/)
         {
             grounded = true;
         }
-        if (collision.gameObject.tag == "Die")
-        {
-            Destroy(gameObject);
-        }
+        
     }
     void OnEnable()
     {
@@ -195,9 +192,13 @@ public class brbPlayerController : MonoBehaviour
     // called second
     void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
-        pauseMenu = GameObject.Find("Menu");
+        gameObject.tag = "Player";
         grantScrip.score += stockCounter;
+       
         transform.position = new Vector2(0,0);
+       
+        //pauseMenu = GameObject.Find("Menu");
+        
     }
 
     // called third

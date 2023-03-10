@@ -201,7 +201,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rb: {fileID: -5841613576261091132}
   animator: {fileID: 2904586790003023381}
-  grantScrip: {fileID: 0}
+  grantScrip: {fileID: 5827697423238103066}
   State: 0
   leftTrigger: {fileID: 5203710147082252732}
   rightTrigger: {fileID: 2252460350973904788}

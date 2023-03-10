@@ -6,6 +6,7 @@ using TMPro;
 
 public class MainManager : MonoBehaviour
 {
+    private bool go = true;
     public List<int> usedScen = new List<int>();
     public float tuttim = 15f;
     [SerializeField] private GameObject tutpan;
@@ -52,6 +53,7 @@ public class MainManager : MonoBehaviour
         SceneManager.sceneLoaded += OnSceneLoaded;
     }
     void Update(){
+        go = true;
         if (tutpan != null)
         {
             if (tutpan.activeSelf == true)
@@ -114,7 +116,6 @@ public class MainManager : MonoBehaviour
         if(SceneManager.GetActiveScene () == SceneManager.GetSceneByName ("Play")){
             if(currentDevil == 0f){
             currentDevil = Random.Range(1, PlayerN + 1);
-            Debug.Log("hit");
             if(curWorld == 0){
             curWorld = Random.Range(1, world + 1);
             }
@@ -136,6 +137,8 @@ public class MainManager : MonoBehaviour
     // called second
     void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
+        if(go){
+            go = false;
         tut = true;
         tuttim = 15f;
         tutpan = GameObject.Find("TutorialPanel");
@@ -204,6 +207,7 @@ public class MainManager : MonoBehaviour
             score[i] = PM.DT + PM.hits;
            // Debug.Log(score[i]);
         }
+       
         num = 5;
         for(int i = 0; i < 4; i++){
             num--;
@@ -213,13 +217,54 @@ public class MainManager : MonoBehaviour
                 if(arr[i] != null){
                 PM = arr[j].GetComponent<rbPlayerMovement>();
                 if(temp == PM.DT + PM.hits && temp != 400f){
+                    Debug.Log(num);
+                    Debug.Log(PM.score);
                     PM.score += num;
+                    Debug.Log(PM.score);
                     score[j] = 400f;
+                    Debug.Log("im so confused");
+                }
+            }
+            }
+        
+        }
+
+    }
+    
+    if(SceneManager.GetActiveScene() == SceneManager.GetSceneByName("Results")){
+        for(int i = 0; i < 8; i++){
+         score[i] = 0;
+    }
+         for(int i = 0; i < PlayerN; i++ ){
+            //Debug.Log("player " + i);
+            PM = arr[i].GetComponent<rbPlayerMovement>();
+           // Debug.Log(PM.DT);
+           // Debug.Log(PM.hits);
+            score[i] = PM.score;
+            //Debug.Log(score[i]);
+        }
+num = 0;
+    
+        for(int i = 0; i < PlayerN; i++){
+            num++;
+            temp = Mathf.Max(score[1], score[2],score[3],score[4],score[5],score[6],score[7],score[0]);
+            //Debug.Log(temp);
+            for(int j = 0; j < PlayerN; j++){
+                if(arr[i] != null){
+                PM = arr[j].GetComponent<rbPlayerMovement>();
+                if(temp == PM.score && temp != 0){
+                    
+                    PM.rank = i + 1;
+                    
+                    score[j] = 0;
                 }
             }
             }
         }
+        Debug.Log(num);
+        
     }
+        }
     }
 
     // called third

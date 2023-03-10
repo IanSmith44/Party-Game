@@ -168,7 +168,7 @@ public class rbPlayerController : MonoBehaviour
             grantPlayerScript.score -= 1;
             transform.position = new Vector2(5500,0);
             gameObject.tag = "ground";
-            //Destroy(gameObject);
+            Debug.Log("die?");
         }
         if (collision.gameObject.tag == "Jump Pad")
         {
