@@ -6,6 +6,7 @@ using TMPro;
 
 public class MainManager : MonoBehaviour
 {
+    public List<int> usedScen = new List<int>();
     public float tuttim = 15f;
     [SerializeField] private GameObject tutpan;
     public bool tut = true;
@@ -33,11 +34,6 @@ public class MainManager : MonoBehaviour
     public int curWorld = 0;
     private rbPlayerMovement PM;
 
-    private void start(){
-        sce = Random.Range(2, 6);
-        useLess = GameObject.Find("PlayerManager").GetComponent<useLess>();
-
-    }
     private void Awake()
     {
         // start of new code
@@ -84,8 +80,20 @@ public class MainManager : MonoBehaviour
         }
         time -= Time.deltaTime;
         if(time <= 0){
-            sce = Random.Range(2, 6);
+        if(usedScen.Count >= 4)
+            {
+                SceneManager.LoadScene(6);
+            }
+            if (usedScen.Count < 4)
+            {sce = Random.Range(2, 6);
+            while (usedScen.Contains(sce))
+                {
+                    sce = Random.Range(2, 6);
+                }
+
+            usedScen.Add(sce);
             SceneManager.LoadScene(sce);
+            }
             if (SceneManager.GetActiveScene() != SceneManager.GetSceneByName("rb"))
             {
                 time = 120;

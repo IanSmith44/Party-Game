@@ -201,13 +201,25 @@ public class rbPlayerMovement : MonoBehaviour
         }
     }
     public void OnStart(InputAction.CallbackContext context){
-
+        if (context.action.triggered)
+        {
         if(SceneManager.GetActiveScene () == SceneManager.GetSceneByName ("rbSampleScene"))
         {
-        scen = Random.Range(2, 6);
+
+        if (MM.usedScen.Count < 4)
+        {scen = Random.Range(2, 6);
+
+            while (MM.usedScen.Contains(scen))
+                {
+                    scen = Random.Range(2, 6);
+                }
+
+        MM.usedScen.Add(scen);
         //Set scene here for testing specific scene
         //scen = 5;
         SceneManager.LoadScene(scen);
+        }
+        }
         }
         }
 
