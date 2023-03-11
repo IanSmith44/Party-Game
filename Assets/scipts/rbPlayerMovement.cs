@@ -183,6 +183,7 @@ public class rbPlayerMovement : MonoBehaviour
             colors = Random.Range(1, 9);
         }
         MM.usedColors.Add(colors);
+        curCol = colors;
         switch(colors){
             case 1:
                 sr.color = MM.red;
