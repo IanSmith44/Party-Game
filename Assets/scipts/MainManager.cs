@@ -86,7 +86,11 @@ public class MainManager : MonoBehaviour
         }
         time -= Time.deltaTime;
         if(time <= 0){
-        if(usedScen.Count >= 4)
+            if (SceneManager.GetActiveScene().name == "Results")
+            {
+                SceneManager.LoadScene(0);
+            }
+        else if(usedScen.Count >= 4)
             {
                 SceneManager.LoadScene(6);
             }
@@ -207,7 +211,7 @@ public class MainManager : MonoBehaviour
             score[i] = PM.DT + PM.hits;
            // Debug.Log(score[i]);
         }
-       
+
         num = 5;
         for(int i = 0; i < 4; i++){
             num--;
@@ -226,11 +230,11 @@ public class MainManager : MonoBehaviour
                 }
             }
             }
-        
+
         }
 
     }
-    
+
     if(SceneManager.GetActiveScene() == SceneManager.GetSceneByName("Results")){
         for(int i = 0; i < 8; i++){
          score[i] = 0;
@@ -244,7 +248,7 @@ public class MainManager : MonoBehaviour
             //Debug.Log(score[i]);
         }
 num = 0;
-    
+
         for(int i = 0; i < PlayerN; i++){
             num++;
             temp = Mathf.Max(score[1], score[2],score[3],score[4],score[5],score[6],score[7],score[0]);
@@ -253,16 +257,16 @@ num = 0;
                 if(arr[i] != null){
                 PM = arr[j].GetComponent<rbPlayerMovement>();
                 if(temp == PM.score && temp != 0){
-                    
+
                     PM.rank = i + 1;
-                    
+
                     score[j] = 0;
                 }
             }
             }
         }
         Debug.Log(num);
-        
+
     }
         }
     }

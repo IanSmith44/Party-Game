@@ -181,7 +181,7 @@ public class brbPlayerController : MonoBehaviour
         {
             grounded = true;
         }
-        
+
     }
     void OnEnable()
     {
@@ -194,11 +194,11 @@ public class brbPlayerController : MonoBehaviour
     {
         gameObject.tag = "Player";
         grantScrip.score += stockCounter;
-       
+
         transform.position = new Vector2(0,0);
-       
+
         //pauseMenu = GameObject.Find("Menu");
-        
+
     }
 
     // called third

@@ -25,7 +25,7 @@ public class ianScore : MonoBehaviour
 
         GameObject[] targets = null;
         targets = GameObject.FindGameObjectsWithTag("Player");
-        //Debug.Log(targets.Length);
+        Debug.Log(targets.Length);
         if (targets.Length == 0)
         {
             //Debug.Log("No players");

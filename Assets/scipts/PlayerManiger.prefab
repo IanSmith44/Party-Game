@@ -44,3 +44,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 220e44cb5db38cb499a08ac61e6340d5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  usedScen: 
+  tuttim: 15
+  tutpan: {fileID: 0}
+  tut: 1
+  curScene: 
+  player1: {fileID: 0}
+  player2: {fileID: 0}
+  player3: {fileID: 0}
+  player4: {fileID: 0}
+  player5: {fileID: 0}
+  player6: {fileID: 0}
+  player7: {fileID: 0}
+  player8: {fileID: 0}
+  TL: {fileID: 0}
+  time: 120
+  currentDevil: 0
+  PlayerN: 0
+  useLess: {fileID: 0}
+  world: 0
+  curWorld: 0

@@ -187,15 +187,9 @@ public class rbPlayerController : MonoBehaviour
     void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
         pauseMenu = GameObject.Find("Menu");
-
-
-
-
         //TF.position = new Vector2(-2.5f + PN,0);
         transform.position = new Vector2(0,0);
         gameObject.tag = "Player";
-
-
     }
 
     // called third

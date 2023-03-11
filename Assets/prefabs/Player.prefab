@@ -15,6 +15,8 @@ GameObject:
   - component: {fileID: 4324918322493658075}
   - component: {fileID: 5827697423238103066}
   - component: {fileID: 6370824530935712870}
+  - component: {fileID: 6836344589901540267}
+  - component: {fileID: 4611359867189474927}
   - component: {fileID: 2904586790003023383}
   - component: {fileID: -5841613576261091132}
   - component: {fileID: 7240012125435917374}
@@ -23,7 +25,7 @@ GameObject:
   - component: {fileID: 1054642532850458147}
   - component: {fileID: 5203710147082252732}
   - component: {fileID: 2252460350973904788}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Player
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -158,6 +160,7 @@ MonoBehaviour:
   ianPlayerScript: {fileID: 1878979339699229335}
   grantPlayerScript: {fileID: 5827697423238103066}
   brennonPlayerScript: {fileID: 6370824530935712870}
+  resultsScript: {fileID: 6836344589901540267}
 --- !u!114 &5827697423238103066
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -170,6 +173,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 862c0571a9fb6e24ba729a3b7427ec63, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  rank: 0
   ps: {fileID: 655574989116791696}
   score: 0
   hits: 0
@@ -210,6 +214,32 @@ MonoBehaviour:
   grounded: 0
   hitMultiplier: 1
   pauseMenu: {fileID: 0}
+--- !u!114 &6836344589901540267
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2904586790003023387}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c4198cfd3d715ad4dbe1701909b7d057, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  scr: {fileID: 5827697423238103066}
+  rb: {fileID: -5841613576261091132}
+--- !u!114 &4611359867189474927
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2904586790003023387}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa8b85e561d6c9c47b8ab8d90dfe3cf2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &2904586790003023383
 MonoBehaviour:
   m_ObjectHideFlags: 0

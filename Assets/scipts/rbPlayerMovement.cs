@@ -319,6 +319,7 @@ public class rbPlayerMovement : MonoBehaviour
     // called second
     void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
+        gameObject.tag = "Player";
         pauseMenu = GameObject.Find("Menu");
         ammo = 0;
         //TF.position = new Vector2(-2.5f + PN,0);
