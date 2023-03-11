@@ -6,6 +6,17 @@ using TMPro;
 
 public class MainManager : MonoBehaviour
 {
+    public List<int> usedColors = new List<int>(); 
+    public Color red = new Color(255f,0f,0f);
+    public Color green = new Color(0f,255f,0f);
+    public Color blue = new Color(0f,0f,255f);
+    public Color yellow = new Color(255f,255f,0f);
+    public Color orange = new Color(255f,165f,0f);
+    public Color purple = new Color(128f,0f,128f);
+    public Color black = new Color(0f,0f,0f);
+    public Color white = new Color(255f,255f,255f);
+
+
     private bool go = true;
     public List<int> usedScen = new List<int>();
     public float tuttim = 15f;
@@ -50,7 +61,10 @@ public class MainManager : MonoBehaviour
     }
     void Start()
     {
+
+        //Color[] colorlist = {0f, 0f, 0f, 1f,new Color(255f, 255f, 255f, 1f),new Color(255f, 255f, 0f), new Color(0f, 0f, 255f), new Color(0f, 255f, 0f),new Color(255f, 0f, 0f),new Color(255f, 165f, 0f),new Color(128f, 0f, 128f)};
         SceneManager.sceneLoaded += OnSceneLoaded;
+
     }
     void Update(){
         go = true;

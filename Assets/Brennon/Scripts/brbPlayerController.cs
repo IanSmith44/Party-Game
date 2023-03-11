@@ -192,6 +192,7 @@ public class brbPlayerController : MonoBehaviour
     // called second
     void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
+        animator.SetBool("run", false);
         gameObject.tag = "Player";
         grantScrip.score += stockCounter;
 

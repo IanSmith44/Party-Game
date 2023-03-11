@@ -14,6 +14,7 @@ public class rbPlayerMovement : MonoBehaviour
     }
     public int rank = 0;
 
+    private int colors = 0;
     private float r;
     private float g;
     private float b;
@@ -72,20 +73,44 @@ public class rbPlayerMovement : MonoBehaviour
 
         BC = gameObject.GetComponent<BoxCollider2D>();
         PC = gameObject.GetComponent<PolygonCollider2D>();
-        if(useLess.colr == 0){
-            sr.color = new Color(r, g, b);
-            useLess.colr += 1;
-        } else if(useLess.colr == 1){
-            sr.color = new Color(1f, 0.30196078f, 0.30196078f);
-            useLess.colr += 1;
-        } else if(useLess.colr == 2){
-            sr.color = new Color(0.3f, 1f, 0.3f);
-            useLess.colr += 1;
-        } else if(useLess.colr == 3){
-            sr.color = new Color(0.3f, 0.30196078f, 1f);
-            useLess.colr += 1;
-        } else {
-            sr.color = new Color(r, g, b);
+        if(MM.usedColors.Contains(colors)){
+            MM.usedColors.Remove(colors);
+        }
+
+
+        colors = Random.Range(1, 9);
+        while(MM.usedColors.Contains(colors)){
+            colors = Random.Range(1, 9);
+        }
+        MM.usedColors.Add(colors);
+        switch(colors){
+            case 1:
+                sr.color = MM.red;
+                break;
+            case 2:
+                sr.color = MM.green;
+                break;
+            case 3:
+                sr.color = MM.blue;
+                break;  
+            case 4:
+                sr.color = MM.yellow;
+                break;
+            case 5:
+                sr.color = MM.orange;
+                break;  
+            case 6:
+                sr.color = MM.purple;
+                break;  
+            case 7:
+                sr.color = MM.black;
+                break;
+            case 8:
+                sr.color = MM.white;
+                break;
+            default:
+                Debug.Log("color no work :.(");
+                break;
         }
 
 
@@ -137,14 +162,52 @@ public class rbPlayerMovement : MonoBehaviour
         }
     }
     public void OnJoin(InputAction.CallbackContext context){
+        if(context.action.triggered){
     if(SceneManager.GetActiveScene () == SceneManager.GetSceneByName ("rbSampleScene")){
-            r = Random.value;
-        g = Random.value;
-        b = Random.value;
-            sr.color = new Color(r, g, b);
+        if(MM.usedColors.Contains(colors)){
+            MM.usedColors.Remove(colors);
+        }
 
+
+        colors = Random.Range(1, 9);
+        while(MM.usedColors.Contains(colors)){
+            colors = Random.Range(1, 9);
+        }
+        MM.usedColors.Add(colors);
+        switch(colors){
+            case 1:
+                sr.color = MM.red;
+                break;
+            case 2:
+                sr.color = MM.green;
+                break;
+            case 3:
+                sr.color = MM.blue;
+                break;  
+            case 4:
+                sr.color = MM.yellow;
+                break;
+            case 5:
+                sr.color = MM.orange;
+                break;  
+            case 6:
+                sr.color = MM.purple;
+                break;  
+            case 7:
+                sr.color = MM.black;
+                break;
+            case 8:
+                sr.color = MM.white;
+                break;
+            default:
+                Debug.Log("color no work :.(");
+                break;
+        }
+        //sr.color = MM.blue;
+       
         } else {
 
+        }
         }
 
     }
@@ -320,15 +383,17 @@ public class rbPlayerMovement : MonoBehaviour
     void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
         gameObject.tag = "Player";
-        pauseMenu = GameObject.Find("Menu");
+        
         ammo = 0;
         //TF.position = new Vector2(-2.5f + PN,0);
         TF.position = new Vector2(0,0);
         cornE = false;
         AM.SetBool("CornEat", false);
+        AM.SetBool("run", false);
         eat = 0;
         hits = 0;
         DT = 0;
+        pauseMenu = GameObject.Find("Menu");
     }
 
     // called third
