@@ -6,6 +6,7 @@ using UnityEngine.InputSystem;
 
 public class rbPlayerMovement : MonoBehaviour
 {
+    public int curCol;
     // Start is called before the first frame update
     public enum playerState{
         idle,
@@ -86,30 +87,38 @@ public class rbPlayerMovement : MonoBehaviour
         switch(colors){
             case 1:
                 sr.color = MM.red;
+                curCol = 1;
                 break;
             case 2:
                 sr.color = MM.green;
+                curCol = 2;
                 break;
             case 3:
                 sr.color = MM.blue;
-                break;  
+                curCol = 3;
+                break;
             case 4:
                 sr.color = MM.yellow;
+                curCol = 4;
                 break;
             case 5:
                 sr.color = MM.orange;
-                break;  
+                curCol = 5;
+                break;
             case 6:
                 sr.color = MM.purple;
-                break;  
+                curCol = 6;
+                break;
             case 7:
                 sr.color = MM.black;
+                curCol = 7;
                 break;
             case 8:
                 sr.color = MM.white;
+                curCol = 8;
                 break;
             default:
-                Debug.Log("color no work :.(");
+                Debug.Log("color no work :.(");;
                 break;
         }
 
@@ -183,16 +192,16 @@ public class rbPlayerMovement : MonoBehaviour
                 break;
             case 3:
                 sr.color = MM.blue;
-                break;  
+                break;
             case 4:
                 sr.color = MM.yellow;
                 break;
             case 5:
                 sr.color = MM.orange;
-                break;  
+                break;
             case 6:
                 sr.color = MM.purple;
-                break;  
+                break;
             case 7:
                 sr.color = MM.black;
                 break;
@@ -204,7 +213,7 @@ public class rbPlayerMovement : MonoBehaviour
                 break;
         }
         //sr.color = MM.blue;
-       
+
         } else {
 
         }
@@ -383,7 +392,7 @@ public class rbPlayerMovement : MonoBehaviour
     void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
         gameObject.tag = "Player";
-        
+
         ammo = 0;
         //TF.position = new Vector2(-2.5f + PN,0);
         TF.position = new Vector2(0,0);

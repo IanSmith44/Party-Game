@@ -12,6 +12,7 @@ TagManager:
   - kernal
   - fireBall
   - Devil
+  - PlayerTarget
   layers:
   - Default
   - TransparentFX

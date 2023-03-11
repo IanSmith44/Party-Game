@@ -6,12 +6,12 @@ using TMPro;
 
 public class MainManager : MonoBehaviour
 {
-    public List<int> usedColors = new List<int>(); 
+    public List<int> usedColors = new List<int>();
     public Color red = new Color(255f,0f,0f);
     public Color green = new Color(0f,255f,0f);
     public Color blue = new Color(0f,0f,255f);
     public Color yellow = new Color(255f,255f,0f);
-    public Color orange = new Color(255f,165f,0f);
+    public Color orange = new Color(255f,166f,0f);
     public Color purple = new Color(128f,0f,128f);
     public Color black = new Color(0f,0f,0f);
     public Color white = new Color(255f,255f,255f);
@@ -118,7 +118,11 @@ public class MainManager : MonoBehaviour
             usedScen.Add(sce);
             SceneManager.LoadScene(sce);
             }
-            if (SceneManager.GetActiveScene() != SceneManager.GetSceneByName("rb"))
+            if (SceneManager.GetActiveScene() == SceneManager.GetSceneByName("Results"))
+            {
+                time = 30f;
+            }
+            else if (SceneManager.GetActiveScene() != SceneManager.GetSceneByName("rb"))
             {
                 time = 120f;
             }
@@ -206,14 +210,18 @@ public class MainManager : MonoBehaviour
         world = 0;
         currentDevil = 0f;
         Debug.Log("running time");
-        if (SceneManager.GetActiveScene() != SceneManager.GetSceneByName("rb"))
-        {
-            time = 120f;
-        }
-        else
-        {
-            time = 300f;
-        }
+        if (SceneManager.GetActiveScene() == SceneManager.GetSceneByName("Results"))
+            {
+                time = 30f;
+            }
+            else if (SceneManager.GetActiveScene() != SceneManager.GetSceneByName("rb"))
+            {
+                time = 120f;
+            }
+            else
+            {
+                time = 300f;
+            }
         Debug.Log("ran time");
         if(curScene == "Play" || curScene == "CornEat"){
         Debug.Log(curScene);

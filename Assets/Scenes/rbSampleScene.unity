@@ -2386,6 +2386,18 @@ PrefabInstance:
       propertyPath: useLess
       value: 
       objectReference: {fileID: 1763395964}
+    - target: {fileID: 3751582126035746360, guid: e69881356807abd489804cbe809d65ca, type: 3}
+      propertyPath: orange.b
+      value: 0.14117648
+      objectReference: {fileID: 0}
+    - target: {fileID: 3751582126035746360, guid: e69881356807abd489804cbe809d65ca, type: 3}
+      propertyPath: orange.g
+      value: 0.49411765
+      objectReference: {fileID: 0}
+    - target: {fileID: 3751582126035746360, guid: e69881356807abd489804cbe809d65ca, type: 3}
+      propertyPath: orange.r
+      value: 0.99215686
+      objectReference: {fileID: 0}
     - target: {fileID: 4964347405320275325, guid: e69881356807abd489804cbe809d65ca, type: 3}
       propertyPath: m_Name
       value: MainManager

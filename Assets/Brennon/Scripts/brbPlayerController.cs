@@ -4,6 +4,14 @@ using UnityEngine.SceneManagement;
 
 public class brbPlayerController : MonoBehaviour
 {
+    [SerializeField] private ParticleSystem psr;
+    [SerializeField] private ParticleSystem psg;
+    [SerializeField] private ParticleSystem psb;
+    [SerializeField] private ParticleSystem psy;
+    [SerializeField] private ParticleSystem pso;
+    [SerializeField] private ParticleSystem psp;
+    [SerializeField] private ParticleSystem psbl;
+    [SerializeField] private ParticleSystem pswh;
     MainManager MM;
     public Rigidbody2D rb;
 
@@ -66,6 +74,35 @@ public class brbPlayerController : MonoBehaviour
         jumped = context.action.triggered;
     }
 
+    public void onHit()
+    {
+        switch(grantScrip.curCol) {
+            case 1:
+                psr.Play();
+                break;
+            case 2:
+                psg.Play();
+                break;
+            case 3:
+                psb.Play();
+                break;
+            case 4:
+                psy.Play();
+                break;
+            case 5:
+                pso.Play();
+                break;
+            case 6:
+                psp.Play();
+                break;
+            case 7:
+                psbl.Play();
+                break;
+            case 8:
+                pswh.Play();
+                break;
+        }
+    }
     public void OnSkip()
     {
         MM.tuttim = 0f;
@@ -90,6 +127,7 @@ public class brbPlayerController : MonoBehaviour
             }
             PC = collidingWith.GetComponent<brbPlayerController>();
             collidingWith.GetComponent<Rigidbody2D>().AddForce(new Vector3(xForce, yForce, 0) * PC.hitMultiplier);
+            collidingWith.GetComponent<brbPlayerController>().onHit();
             PC.hitMultiplier += 0.5f;
         }
     }
