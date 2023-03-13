@@ -4,7 +4,9 @@ using UnityEngine.SceneManagement;
 
 public class rbPlayerController : MonoBehaviour
 {
+    [SerializeField] private float SlamSpeed = 5f;
     MainManager MM;
+    private bool slam = false;
     [SerializeField] private GameObject pauseMenu;
     private bool spin;
     [SerializeField] private rbPlayerMovement grantPlayerScript;
@@ -69,9 +71,17 @@ public class rbPlayerController : MonoBehaviour
         movementInput = context.ReadValue<Vector2>();
     }
 
+    public void OnSlam(InputAction.CallbackContext context)
+    {
+        slam = context.action.triggered;
+    }
+
     public void OnJump(InputAction.CallbackContext context)
     {
+        if (grounded)
+        {
         jumped = context.action.triggered;
+        }
     }
 
     public void OnSkip()
@@ -86,6 +96,10 @@ public class rbPlayerController : MonoBehaviour
 
     void Update()
     {
+        if (slam)
+        {
+            rb.velocity = new Vector2(rb.velocity.x, rb.velocity.y - SlamSpeed);
+        }
         if (spin)
         {
             rb.freezeRotation = false;
@@ -161,6 +175,8 @@ public class rbPlayerController : MonoBehaviour
         if (collision.gameObject.tag == "Ground")
         {
             grounded = true;
+            jumped = false;
+            slam = false;
             //Debug.Log("Grounded!");
         }
         if (collision.gameObject.tag == "Die")
@@ -187,7 +203,7 @@ public class rbPlayerController : MonoBehaviour
     void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
         animator.SetBool("run", false);
-        
+
         //TF.position = new Vector2(-2.5f + PN,0);
         transform.position = new Vector2(0,0);
         gameObject.tag = "Player";

@@ -14748,6 +14748,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1bc9d778fd0e91048aa4f8d641b68d91, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  SlamSpeed: 2
   pauseMenu: {fileID: 0}
   grantPlayerScript: {fileID: 5827697423238103066}
   enemy: {fileID: 0}
@@ -15143,6 +15144,22 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: e419362d-8f75-4662-b6fb-87bfc77e7ace
     m_ActionName: player/Skip[/XInputControllerWindows/buttonWest,/Keyboard/e]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1878979339699229335}
+        m_TargetAssemblyTypeName: rbPlayerController, Assembly-CSharp
+        m_MethodName: OnSlam
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 984e7c40-a526-4eed-8d79-dbb23f94258d
+    m_ActionName: player/Slam[/XInputControllerWindows/buttonWest,/Keyboard/q]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: player

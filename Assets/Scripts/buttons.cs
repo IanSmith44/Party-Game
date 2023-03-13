@@ -13,4 +13,8 @@ public class buttons : MonoBehaviour
     {
         Application.Quit();
     }
+    public void Oncredits()
+    {
+        SceneManager.LoadScene(7);
+    }
 }

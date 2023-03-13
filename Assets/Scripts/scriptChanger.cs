@@ -37,6 +37,7 @@ public class scriptChanger : MonoBehaviour
             rb.mass = 1f;
             rb.drag = 1.25f;
             rb.gravityScale = 3.75f;
+            transform.rotation = Quaternion.Euler(0, 0, 0);
             player.transform.localScale = new Vector3(0.5f, 0.5f, 1f);
             brennonPlayerScript.enabled = true;
             ianPlayerScript.enabled = false;
